@@ -7,7 +7,7 @@ import SideBar from "./components/SideBar";
 const App = () => {
   return (
     <Box>
-      <Stack>
+      <Stack direction="row" spacing={2} justifyContent="space-between">
         <SideBar />
         <Feed />
         <RightBar />

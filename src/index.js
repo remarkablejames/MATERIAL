@@ -1,7 +1,13 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import App from "./App";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<App />);
+root.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+);

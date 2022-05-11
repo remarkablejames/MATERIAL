@@ -5,12 +5,14 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   styled,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { border, borderRadius } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { theme } from "../theme/theme";
 
 const StyledToolBar = styled(Toolbar)({
@@ -40,6 +42,7 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky">
       <StyledToolBar>
@@ -60,9 +63,10 @@ const NavBar = () => {
           <Avatar
             sx={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            onClick={() => setOpen(true)}
           />
         </Icons>
-        <UserBox>
+        <UserBox onClick={() => setOpen(true)}>
           <Avatar
             sx={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -70,6 +74,24 @@ const NavBar = () => {
           <Typography variant="span">John Doe</Typography>
         </UserBox>
       </StyledToolBar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
